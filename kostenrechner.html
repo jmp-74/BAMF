@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenrechner Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: var(--background-grey);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .rechner-container {
+            background-color: var(--dp-weiss);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .rechner-container h2 {
+            color: var(--dp-pantone-320);
+            margin-top: 0;
+            text-align: center;
+        }
+        .rechner-container p {
+            text-align: center;
+            color: #666;
+        }
+        .rechner-container .input-group {
+            margin-bottom: 20px;
+        }
+        .rechner-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .rechner-container input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .rechner-container .result-text {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="rechner-container">
+        <h2>Simulierter Kostenrechner</h2>
+        <p>Dieser Rechner dient als Anschauungsbeispiel und führt keine echten Berechnungen durch.</p>
+        <div class="input-group">
+            <label for="stunden">Anzahl der Unterrichtsstunden:</label>
+            <input type="number" id="stunden" value="700" readonly>
+        </div>
+        <div class="input-group">
+            <label for="kosten-pro-stunde">Kosten pro Stunde:</label>
+            <input type="text" id="kosten-pro-stunde" value="2.29 €" readonly>
+        </div>
+        <div class="result-text">
+            Die geschätzten Gesamtkosten betragen: <strong>1.603,00 €</strong>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+/* --- Corporate Design Variablen --- */
+:root {
+    --dp-pantone-320: #009ca6;
+    --dp-kaminrot: #FF7F57;
+    --dp-dunkelgrau: #333132;
+    --dp-weiss: #ffffff;
+    --dp-gelb-highlight: #FFB758;
+    --background-grey: #f4f6f8;
+    --border-color: #e0e0e0;
+}
+
+/* --- Grundlegende Stile --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-grey);
+    color: var(--dp-dunkelgrau);
+    margin: 0;
+    padding-top: 80px; /* Platz für den Header */
+    padding-bottom: 80px; /* Platz für den Footer */
+}
+
+/* --- Header / Obere Leiste --- */
+.app-header {
+    background-color: var(--dp-weiss);
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+.logo {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--dp-dunkelgrau);
+    flex-shrink: 0; /* Verhindert, dass das Logo schrumpft */
+}
+.logo span {
+    color: var(--dp-pantone-320);
+}
+
+/* --- Navigationsleiste im Header --- */
+.main-nav {
+    flex-grow: 1; /* Nimmt den verfügbaren Platz ein */
+    margin-left: 20px;
+}
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Ermöglicht Umbruch auf kleineren Bildschirmen */
+    justify-content: flex-end; /* Rechtsbündig ausrichten */
+}
+.main-nav ul li {
+    margin-left: 20px;
+}
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--dp-dunkelgrau);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    transition: color 0.2s ease;
+}
+.main-nav ul li a:hover,
+.main-nav ul li a.active { /* Aktiver Link im Header */
+    color: var(--dp-pantone-320);
+}
+
+/* --- Suchfeld im Header (nicht mehr verwendet, aber aus Kompatibilität enthalten) --- */
+.search-container {
+    display: none; /* Versteckt das Suchfeld */
+}
+
+/* --- CD Akzent-Balken --- */
+.cd-accent-bar {
+    position: fixed;
+    top: 0;
+    right: 40px;
+    width: 8px;
+    height: 100%;
+    background-color: var(--dp-pantone-320);
+    z-index: 1001;
+}
+
+/* --- Hauptinhalt --- */
+main {
+    padding: 25px;
+}
+.page {
+    display: block; /* Alle statischen Seiten sind sichtbar */
+}
+
+.intro-header { margin-bottom: 25px; }
+.intro-header h1 { font-size: 2rem; font-weight: 700; margin: 0 0 5px 0; color: var(--dp-dunkelgrau); }
+.intro-header p { margin: 0; color: #666; font-size: 1rem; }
+
+.schnellzugriff h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; }
+.grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+
+.grid-button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 8px;
+    color: var(--dp-weiss);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    min-height: 120px;
+}
+.grid-button:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+.grid-button .icon { width: 28px; height: 28px; fill: var(--dp-weiss); margin-bottom: 15px; }
+    
+.btn-pantone { background-color: var(--dp-pantone-320); }
+.btn-kaminrot { background-color: var(--dp-kaminrot); }
+
+/* --- Inhalts- & Suchergebnisseiten --- */
+.content-page {
+    background-color: var(--dp-weiss);
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+}
+.content-page h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dp-pantone-320);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* --- Styles für den Sprachausgabe-Button --- */
+.read-aloud-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.read-aloud-button svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--dp-pantone-320);
+    transition: fill 0.2s ease;
+}
+.read-aloud-button:hover svg {
+    fill: var(--dp-kaminrot);
+}
+
+.content-page h3 { font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid var(--dp-pantone-320); padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; }
+.content-page p, .content-page ul { line-height: 1.7; font-size: 1rem; }
+.content-page ul { padding-left: 20px; }
+.content-page strong { font-weight: 700; color: var(--dp-dunkelgrau); }
+.content-page a { color: var(--dp-pantone-320); font-weight: 500; text-decoration: none; }
+.content-page a:hover { text-decoration: underline; }
+
+/* Styles für Praxisbeispiele und neue Hinweise */
+.praxis-beispiel, .hinweis-box {
+    background-color: #f4f6f8; /* Hellgrauer Hintergrund */
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--dp-kaminrot);
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: var(--dp-dunkelgrau);
+}
+.praxis-beispiel h4, .hinweis-box h4 {
+    margin-top: 0;
+    color: var(--dp-kaminrot);
+    font-weight: 700;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--dp-pantone-320);
+    color: var(--dp-weiss);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    margin-bottom: 20px;
+}
+.button-link:hover {
+    background-color: #008892;
+}
+
+/* --- Footer --- */
+.app-footer { background-color: var(--dp-weiss); border-top: 1px solid var(--border-color); position: fixed; bottom: 0; left: 0; right: 0; height: 70px; display: flex; align-items: center; justify-content: space-around; z-index: 1000; }
+.footer-item { display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: #666; cursor: pointer; text-decoration: none; border: none; background: none; padding: 5px; width: 25%; }
+.footer-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: #666; transition: fill 0.2s ease; }
+.footer-item.active, .footer-item:hover { color: var(--dp-pantone-320); }
+.footer-item.active svg, .footer-item:hover svg { fill: var(--dp-pantone-320); }
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .app-header { flex-direction: column; height: auto; padding: 10px 15px; align-items: flex-start; }
+    .main-nav { margin-left: 0; width: 100%; margin-top: 10px; }
+    .main-nav ul { justify-content: space-around; }
+    .main-nav ul li { margin: 0 5px; }
+    body { padding-top: 130px; }
+    .logo { margin-bottom: 10px; }
+    .grid-container { grid-template-columns: 1fr; }
+    main { padding: 15px; }
+    .cd-accent-bar { right: 15px; width: 6px; }
+}
