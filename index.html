@@ -13,6 +13,11 @@
     <div class="cd-accent-bar"></div>
     <header class="app-header">
         <div class="logo">Donner <span>+</span> Partner</div>
+        <button class="hamburger" aria-label="Menü öffnen">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html" class="active">Start</a></li>
@@ -34,7 +39,8 @@
         <div id="start-page" class="page">
             <div class="intro-header">
                 <h1>Handbuch Integrationskurse</h1>
-                            </div>
+                <p>Donner + Partner GmbH Baden-Württemberg Bildungszentren</p>
+            </div>
             <section class="handbuch-info">
                 <h2>Herzlich willkommen! Ihr Weg zum Integrationskurs</h2>
                 <p>Dieses Handbuch ist Ihr zentrales und umfassendstes Nachschlagewerk für alle Aspekte der Integrationskurse. Wir möchten Ihnen damit maximale Sicherheit in Ihrer täglichen Arbeit geben. Mit den folgenden Abschnitten können Sie Teilnehmende kompetent und sicher beraten.</p>
@@ -106,6 +112,14 @@
     <script>
         document.getElementById('btn-back').addEventListener('click', () => {
             window.history.back();
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const mainNav = document.querySelector('.main-nav');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
     </script>
 </body>
