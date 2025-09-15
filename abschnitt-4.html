@@ -13,6 +13,11 @@
     <div class="cd-accent-bar"></div>
     <header class="app-header">
         <div class="logo">Donner <span>+</span> Partner</div>
+        <button class="hamburger" aria-label="Menü öffnen">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Start</a></li>
@@ -25,6 +30,7 @@
                 <li><a href="abschnitt-7.html">Verwaltungstipps</a></li>
                 <li><a href="abschnitt-8.html">Datenpflege</a></li>
                 <li><a href="abschnitt-9.html">Anhang & Links</a></li>
+                <li><a href="abschnitt-10.html">Weiterbildung</a></li>
             </ul>
         </nav>
     </header>
@@ -41,11 +47,16 @@
             </h2>
             <p>Transparenz bei den Kosten ist essenziell, um Vertrauen aufzubauen.</p>
             <a href="kostenrechner.html" target="_blank" class="button-link">Kostenrechner testen</a>
-            <h3>Kostenbeitrag</h3>
+            <h3>Kostenbeitrag Integrationskurse</h3>
             <ul>
                 <li>Der Eigenanteil beträgt aktuell <strong>2,29 € pro Unterrichtseinheit</strong>.</li>
                 <li>Für einen 700-UE-Kurs belaufen sich die Kosten auf <strong>1.603 €</strong>.</li>
                 <li>Die Zahlung kann pro Kursabschnitt (100 UE) erfolgen.</li>
+            </ul>
+            <h3>Kostenbeitrag Berufssprachkurse (DeuFöV)</h3>
+            <ul>
+                <li>Der Eigenanteil für Berufssprachkurse beträgt <strong>2,56 € pro Unterrichtseinheit</strong>.</li>
+                <li>Ein Modul mit 100 UE kostet somit <strong>256 €</strong>.</li>
             </ul>
             <h3>Kostenbefreiung</h3>
             <ul>
@@ -115,6 +126,14 @@
             } else {
                 alert("Ihr Browser unterstützt keine Sprachausgabe.");
             }
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const mainNav = document.querySelector('.main-nav');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
     </script>
 </body>
