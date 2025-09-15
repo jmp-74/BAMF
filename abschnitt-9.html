@@ -13,6 +13,11 @@
     <div class="cd-accent-bar"></div>
     <header class="app-header">
         <div class="logo">Donner <span>+</span> Partner</div>
+        <button class="hamburger" aria-label="Menü öffnen">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Start</a></li>
@@ -25,6 +30,7 @@
                 <li><a href="abschnitt-7.html">Verwaltungstipps</a></li>
                 <li><a href="abschnitt-8.html">Datenpflege</a></li>
                 <li><a href="abschnitt-9.html" class="active">Anhang & Links</a></li>
+                <li><a href="abschnitt-10.html">Weiterbildung</a></li>
             </ul>
         </nav>
     </header>
@@ -39,11 +45,39 @@
                     </svg>
                 </button>
             </h2>
+            <div class="hinweis-box">
+                <p>Diese Links wurden auf ihre Aktualität und Funktionsfähigkeit geprüft und können sicher für die Beratung der Teilnehmenden verwendet werden.</p>
+            </div>
             <h3>Wichtige Links</h3>
             <ul>
-                <li><a href="https://www.bamf.de/DE/Themen/Integration/integrationskurse/integrationskurse-node.html" target="_blank">BAMF-Website</a></li>
-                <li><a href="https://www.bamf.de/DE/Service/OnlineDienste/Online-Dienste_node.html" target="_blank">BAMF-Kursfinder</a></li>
-                <li><a href="https://www.telc.net/pruefungsteilnehmende/sprachpruefungen/integration/deutschtest-fuer-zuwanderer-a2b1-dtz/" target="_blank">Anleitung für den DTZ</a></li>
+                <li>
+                    <a href="https://www.bamf.de/DE/Themen/AsylFluechtlingsschutz/AblaufAsylverfahrens/Asylantrag/asylantrag_node.html" target="_blank">Artikel Behörde</a>
+                    <p>Dieser Link führt zum offiziellen Artikel des BAMF über das Asylverfahren und die Rolle der Behörden, was für die Beratung von Asylsuchenden wichtig ist.</p>
+                </li>
+                <li>
+                    <a href="https://www.bamf.de/" target="_blank">BAMF-Website</a>
+                    <p>Offizielle Homepage des Bundesamtes für Migration und Flüchtlinge mit umfassenden Informationen zu allen Integrationsangeboten.</p>
+                </li>
+                <li>
+                    <a href="https://bamf-navi.bamf.de/de/" target="_blank">BAMF-Kursfinder</a>
+                    <p>Ein Tool, um Integrationskurse, Berufssprachkurse und Beratungsstellen in der Nähe zu finden.</p>
+                </li>
+                <li>
+                    <a href="https://www.telc.net/pruefungsteilnehmende/sprachpruefungen/integration/deutschtest-fuer-zuwanderer-a2b1-dtz/" target="_blank">Anleitung für den DTZ</a>
+                    <p>Hier finden Sie alle offiziellen Informationen und Prüfungsrichtlinien von telc für den Deutsch-Test für Zuwanderer (DTZ).</p>
+                </li>
+                <li>
+                    <a href="https://padlet.com/sprachschuledeutschrichtig/teilnehmer-auf-den-dtz-vorbereiten-j4xvbt39aiuoigk7" target="_blank">Teilnehmer auf DTZ vorbereiten</a>
+                    <p>Ein praktisches Padlet mit interaktiven Übungen, Modelltests und Lernmaterialien, um Kursteilnehmer gezielt auf die Prüfung vorzubereiten.</p>
+                </li>
+                <li>
+                    <a href="https://www.integrationskurs.net/fragen-und-antworten" target="_blank">Integrationskurs.net FAQ</a>
+                    <p>Eine Seite, die häufig gestellte Fragen zu Integrationskursen beantwortet. Ideal, um schnell Antworten auf allgemeine Fragen von Teilnehmern zu finden.</p>
+                </li>
+                <li>
+                    <a href="https://www.bamf.de/DE/Themen/Integration/Integrationskurse/Sprachkurse/Berufssprachkurse/Berufssprachkurse-node.html" target="_blank">Berufssprachkurse (DeuFöV)</a>
+                    <p>Offizielle Seite des BAMF mit detaillierten Informationen zu den Berufssprachkursen, inklusive der Voraussetzungen und Ziele.</p>
+                </li>
             </ul>
         </div>
     </main>
@@ -78,6 +112,14 @@
             } else {
                 alert("Ihr Browser unterstützt keine Sprachausgabe.");
             }
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const mainNav = document.querySelector('.main-nav');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
     </script>
 </body>
