@@ -13,6 +13,11 @@
     <div class="cd-accent-bar"></div>
     <header class="app-header">
         <div class="logo">Donner <span>+</span> Partner</div>
+        <button class="hamburger" aria-label="Menü öffnen">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Start</a></li>
@@ -25,6 +30,7 @@
                 <li><a href="abschnitt-7.html">Verwaltungstipps</a></li>
                 <li><a href="abschnitt-8.html">Datenpflege</a></li>
                 <li><a href="abschnitt-9.html">Anhang & Links</a></li>
+                <li><a href="abschnitt-10.html">Weiterbildung</a></li>
             </ul>
         </nav>
     </header>
@@ -80,6 +86,14 @@
             } else {
                 alert("Ihr Browser unterstützt keine Sprachausgabe.");
             }
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const mainNav = document.querySelector('.main-nav');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
     </script>
 </body>
