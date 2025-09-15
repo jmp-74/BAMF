@@ -1,221 +1,350 @@
-/* --- Corporate Design Variablen --- */
 :root {
-    --dp-pantone-320: #009ca6;
-    --dp-kaminrot: #FF7F57;
-    --dp-dunkelgrau: #333132;
-    --dp-weiss: #ffffff;
-    --dp-gelb-highlight: #FFB758;
-    --background-grey: #f4f6f8;
-    --border-color: #e0e0e0;
+    /* Corporate Design Farben */
+    --pantone-color: #009ca6;
+    --kaminrot-color: #d9534f;
+    --dark-grey-color: #333132;
+    --white-color: #FFFFFF;
+    
+    /* Layout und Typografie */
+    --secondary-color: #f0f0f0; /* Leichtes Grau für den Hintergrund */
+    --accent-color: var(--kaminrot-color); /* Akzentfarbe für interaktive Elemente */
+    --font-family: 'Roboto', sans-serif;
 }
 
-/* --- Grundlegende Stile --- */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--background-grey);
-    color: var(--dp-dunkelgrau);
+    font-family: var(--font-family);
     margin: 0;
-    padding-top: 80px; /* Platz für den Header */
-    padding-bottom: 80px; /* Platz für den Footer */
+    background-color: var(--secondary-color);
+    color: var(--dark-grey-color);
+    line-height: 1.6;
 }
 
-/* --- Header / Obere Leiste --- */
-.app-header {
-    background-color: var(--dp-weiss);
-    height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
+.cd-accent-bar {
+    height: 8px;
+    background: linear-gradient(90deg, var(--pantone-color) 0%, var(--kaminrot-color) 100%);
 }
+
+.app-header {
+    background-color: var(--white-color);
+    padding: 1rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .logo {
     font-weight: 700;
-    font-size: 1.4rem;
-    color: var(--dp-dunkelgrau);
-    flex-shrink: 0; /* Verhindert, dass das Logo schrumpft */
-}
-.logo span {
-    color: var(--dp-pantone-320);
+    font-size: 1.5rem;
+    color: var(--dark-grey-color);
 }
 
-/* --- Navigationsleiste im Header --- */
-.main-nav {
-    flex-grow: 1; /* Nimmt den verfügbaren Platz ein */
-    margin-left: 20px;
+.logo span {
+    color: var(--pantone-color);
 }
+
+.main-nav {
+    flex-grow: 1;
+    text-align: right;
+    transition: all 0.3s ease-in-out;
+}
+
 .main-nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
     display: flex;
-    flex-wrap: wrap; /* Ermöglicht Umbruch auf kleineren Bildschirmen */
-    justify-content: flex-end; /* Rechtsbündig ausrichten */
+    justify-content: flex-end;
+    align-items: center;
 }
+
 .main-nav ul li {
-    margin-left: 20px;
+    margin-left: 1.5rem;
 }
-.main-nav ul li a {
+
+.main-nav a {
     text-decoration: none;
-    color: var(--dp-dunkelgrau);
+    color: var(--dark-grey-color);
     font-weight: 500;
-    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    position: relative;
     padding: 5px 0;
-    transition: color 0.2s ease;
-}
-.main-nav ul li a:hover,
-.main-nav ul li a.active { /* Aktiver Link im Header */
-    color: var(--dp-pantone-320);
 }
 
-/* --- Suchfeld im Header (nicht mehr verwendet, aber aus Kompatibilität enthalten) --- */
-.search-container {
-    display: none; /* Versteckt das Suchfeld */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--pantone-color);
+    transition: width 0.3s ease;
 }
 
-/* --- CD Akzent-Balken --- */
-.cd-accent-bar {
-    position: fixed;
-    top: 0;
-    right: 40px;
-    width: 8px;
-    height: 100%;
-    background-color: var(--dp-pantone-320);
-    z-index: 1001;
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
 }
 
-/* --- Hauptinhalt --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.hamburger .bar {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--dark-grey-color);
+    transition: all 0.3s linear;
+    border-radius: 5px;
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 main {
-    padding: 25px;
-}
-.page {
-    display: block; /* Alle statischen Seiten sind sichtbar */
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.intro-header { margin-bottom: 25px; }
-.intro-header h1 { font-size: 2rem; font-weight: 700; margin: 0 0 5px 0; color: var(--dp-dunkelgrau); }
-.intro-header p { margin: 0; color: #666; font-size: 1rem; }
+.intro-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
 
-.schnellzugriff h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; }
-.grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+.intro-header h1 {
+    font-size: 2.5rem;
+    color: var(--pantone-color);
+    margin: 0;
+}
+
+.intro-header p {
+    color: var(--dark-grey-color);
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+.handbuch-info, .schnellzugriff, .content-page {
+    background-color: var(--white-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+h2 {
+    color: var(--kaminrot-color);
+    border-bottom: 2px solid var(--kaminrot-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    color: var(--pantone-color);
+    font-weight: 700;
+}
+
+.hinweis-box, .praxis-beispiel {
+    border-left: 5px solid var(--pantone-color);
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+}
+
+.hinweis-box h4, .praxis-beispiel h4 {
+    margin-top: 0;
+    color: var(--dark-grey-color);
+    font-size: 1.1rem;
+}
+
+.hinweis-box ul, .praxis-beispiel ul {
+    padding-left: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
 
 .grid-button {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 20px;
-    border-radius: 8px;
-    color: var(--dp-weiss);
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-    min-height: 120px;
-}
-.grid-button:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
-.grid-button .icon { width: 28px; height: 28px; fill: var(--dp-weiss); margin-bottom: 15px; }
-    
-.btn-pantone { background-color: var(--dp-pantone-320); }
-.btn-kaminrot { background-color: var(--dp-kaminrot); }
-
-/* --- Inhalts- & Suchergebnisseiten --- */
-.content-page {
-    background-color: var(--dp-weiss);
-    border-radius: 8px;
-    padding: 25px;
-    border: 1px solid var(--border-color);
-}
-.content-page h2 {
-    margin-top: 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--dp-pantone-320);
-    display: flex;
     align-items: center;
-    justify-content: space-between;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--white-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Styles für den Sprachausgabe-Button --- */
+.grid-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-pantone {
+    background-color: var(--pantone-color);
+}
+
+.btn-kaminrot {
+    background-color: var(--kaminrot-color);
+}
+
+.grid-button .icon {
+    width: 3rem;
+    height: 3rem;
+    fill: var(--white-color);
+    margin-bottom: 1rem;
+}
+
+.grid-button span {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.footer-text {
+    text-align: center;
+    color: var(--dark-grey-color);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    opacity: 0.6;
+}
+
+.app-footer {
+    background-color: var(--white-color);
+    padding: 1rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--secondary-color);
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-grey-color);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0.5rem;
+    flex: 1;
+    opacity: 0.7;
+}
+
+.footer-item.active {
+    color: var(--pantone-color);
+    opacity: 1;
+}
+
+.footer-item svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    margin-bottom: 4px;
+}
+
 .read-aloud-button {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
+    width: 30px;
+    height: 30px;
 }
+
 .read-aloud-button svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--dp-pantone-320);
-    transition: fill 0.2s ease;
-}
-.read-aloud-button:hover svg {
-    fill: var(--dp-kaminrot);
+    width: 100%;
+    height: 100%;
+    fill: var(--pantone-color);
 }
 
-.content-page h3 { font-size: 1.3rem; font-weight: 700; border-bottom: 2px solid var(--dp-pantone-320); padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; }
-.content-page p, .content-page ul { line-height: 1.7; font-size: 1rem; }
-.content-page ul { padding-left: 20px; }
-.content-page strong { font-weight: 700; color: var(--dp-dunkelgrau); }
-.content-page a { color: var(--dp-pantone-320); font-weight: 500; text-decoration: none; }
-.content-page a:hover { text-decoration: underline; }
-
-/* Styles für Praxisbeispiele und neue Hinweise */
-.praxis-beispiel, .hinweis-box {
-    background-color: #f4f6f8; /* Hellgrauer Hintergrund */
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid var(--dp-kaminrot);
-    margin-top: 20px;
-    font-size: 0.95rem;
-    color: var(--dp-dunkelgrau);
-}
-.praxis-beispiel h4, .hinweis-box h4 {
-    margin-top: 0;
-    color: var(--dp-kaminrot);
-    font-weight: 700;
-}
-
-.button-link {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--dp-pantone-320);
-    color: var(--dp-weiss);
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
-    margin-bottom: 20px;
-}
-.button-link:hover {
-    background-color: #008892;
-}
-
-/* --- Footer --- */
-.app-footer { background-color: var(--dp-weiss); border-top: 1px solid var(--border-color); position: fixed; bottom: 0; left: 0; right: 0; height: 70px; display: flex; align-items: center; justify-content: space-around; z-index: 1000; }
-.footer-item { display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; color: #666; cursor: pointer; text-decoration: none; border: none; background: none; padding: 5px; width: 25%; }
-.footer-item svg { width: 24px; height: 24px; margin-bottom: 4px; fill: #666; transition: fill 0.2s ease; }
-.footer-item.active, .footer-item:hover { color: var(--dp-pantone-320); }
-.footer-item.active svg, .footer-item:hover svg { fill: var(--dp-pantone-320); }
-
-/* --- Responsive Design --- */
 @media (max-width: 768px) {
-    .app-header { flex-direction: column; height: auto; padding: 10px 15px; align-items: flex-start; }
-    .main-nav { margin-left: 0; width: 100%; margin-top: 10px; }
-    .main-nav ul { justify-content: space-around; }
-    .main-nav ul li { margin: 0 5px; }
-    body { padding-top: 130px; }
-    .logo { margin-bottom: 10px; }
-    .grid-container { grid-template-columns: 1fr; }
-    main { padding: 15px; }
-    .cd-accent-bar { right: 15px; width: 6px; }
+    .app-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .main-nav {
+        display: none;
+        width: 100%;
+        order: 3;
+        text-align: center;
+        background-color: var(--white-color);
+        padding: 1rem 0;
+    }
+    
+    .main-nav.active {
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        margin-top: 1rem;
+        align-items: stretch;
+    }
+
+    .main-nav ul li {
+        margin: 0.5rem 0;
+        text-align: left;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+    }
+    
+    .main-nav a.active {
+        background-color: #f0f0f0;
+    }
+    
+    .main-nav a::after {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 1000;
+    }
+}
+
+@media (min-width: 769px) {
+    .app-footer {
+        display: none;
+    }
 }
